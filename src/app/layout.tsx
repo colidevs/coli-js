@@ -24,7 +24,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </Avatar>
             <Link href="/">
               <button
-                className="rounded-lg bg-white px-3 text-black shadow-md shadow-white duration-300 hover:scale-125 hover:delay-200"
+                className=" rounded-lg bg-white  text-black shadow-md shadow-white duration-300 hover:mx-2 hover:scale-110 hover:delay-200"
                 type="button"
               >
                 <p className="px-5 py-2 text-base">Categoria 1</p>
@@ -32,7 +32,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </Link>
             <Link href="/">
               <button
-                className="rounded-lg bg-white px-3 text-black shadow-md shadow-white duration-300 hover:scale-125 hover:delay-200"
+                className="rounded-lg bg-white  text-black shadow-md shadow-white duration-300 hover:mx-2 hover:scale-110 hover:delay-200"
                 type="button"
               >
                 <p className="px-5 py-2 text-base">Categoria 2</p>
@@ -40,7 +40,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </Link>
             <Link href="/">
               <button
-                className="rounded-lg bg-white px-3 text-black shadow-md shadow-white duration-300 hover:scale-125 hover:delay-200"
+                className=" rounded-lg bg-white  text-black shadow-md shadow-white duration-300 hover:mx-2 hover:scale-110 hover:delay-200"
                 type="button"
               >
                 <p className="px-5 py-2 text-base">Categoria 3</p>
@@ -48,7 +48,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </Link>
             <Link href="/">
               <button
-                className="rounded-lg bg-white px-3 text-black shadow-md shadow-white duration-300 hover:scale-125 hover:delay-200"
+                className="rounded-lg bg-white text-black shadow-md shadow-white duration-300 hover:mx-2 hover:scale-110 hover:delay-200"
                 type="button"
               >
                 <p className="px-5 py-2 text-base">Categoria 4</p>
