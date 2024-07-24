@@ -1,5 +1,16 @@
-import {Button} from "@/components/ui/button";
-
 export default function HomePage() {
-  return <Button>👋</Button>;
+  return (
+    <article className="flex size-full">
+      <section className="content-center">
+        <p className="text-center font-mono text-2xl">
+          Aca vamos a poner un texto donde se indique el objetivo del proytecto, una mini
+          introduccion, etc. Aca vamos a poner un texto donde se indique el objetivo del proytecto,
+          una mini introduccion, etc. Aca vamos a poner un texto donde se indique el objetivo del
+          proytecto, una mini introduccion, etc. Aca vamos a poner un texto donde se indique el
+          objetivo del proytecto, una mini introduccion, etc. Aca vamos a poner un texto donde se
+          indique el objetivo del proytecto, una mini introduccion, etc.
+        </p>
+      </section>
+    </article>
+  );
 }
