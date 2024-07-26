@@ -17,11 +17,11 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className="container m-auto grid min-h-screen grid-rows-[auto,1fr,auto] bg-background px-4 font-sans antialiased">
         <header className="text-xl font-bold leading-[4rem]">
           <Link href="/">coli-js</Link>
+          <Avatar>
+            <AvatarImage src="https://avatars.githubusercontent.com/u/171585901?s=200&v=4" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
           <nav className="flex-1 space-x-8 text-center ">
-            <Avatar>
-              <AvatarImage src="https://avatars.githubusercontent.com/u/171585901?s=200&v=4" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
             <Link href="/">
               <button
                 className=" rounded-lg bg-white  text-black shadow-md shadow-white duration-300 hover:mx-2 hover:scale-110 hover:delay-200"
