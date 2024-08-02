@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "ejercicio": "1- ¿Cuál es el resultado de 2 + '2' en JavaScript?",
+      "opciones": ["4", "22", "NaN", "undefined", "error"],
+      "nivel": 1
+    },
+    {
+      "id": 2,
+      "ejercicio": "2- ¿Qué valor imprimirá la siguiente línea de código?",
+      "opciones": ["number", "string", "boolean", "object", "undefined"],
+      "nivel": 1
+    },
+    {
+      "id": 3,
+      "ejercicio": "3 ¿Qué método se utiliza para convertir una cadena de texto a un número entero?",
+      "opciones": ["number", "string", "boolean", "object", "undefined"],
+      "nivel": 1
+    },
+    {
+      "id": 4,
+      "ejercicio": "4- ¿Cuál es la salida de la siguiente expresión?",
+      "opciones": ["number", "string", "boolean", "object", "undefined"],
+      "nivel": 1
+    }
+]
