@@ -1,26 +1,72 @@
 [
     {
       "id": 1,
-      "ejercicio": "1- ¿Cuál es el resultado de 2 + '2' en JavaScript?",
-      "opciones": ["4", "22", "NaN", "undefined", "error"],
-      "nivel": 1
+      "enunciado": "¿Qué valor imprimirá la siguiente línea de código? 'console.log(typeof 42);'",
+      "opciones": ["number", "string", "boolean", "object", "undefined"],
+      "correcta": "number",
+      "dificultad": "facil"
     },
     {
       "id": 2,
-      "ejercicio": "2- ¿Qué valor imprimirá la siguiente línea de código?",
-      "opciones": ["number", "string", "boolean", "object", "undefined"],
-      "nivel": 1
+      "enunciado": "¿Qué método se utiliza para convertir una cadena de texto a un número entero?",
+      "opciones": ["Number.parseInt()", "Number.toString()", "Number.parseFloat()", "Number.isInteger()", "Number.toFixed()"],
+      "correcta": "Number.parseInt()",
+      "dificultad": "facil"
     },
     {
       "id": 3,
-      "ejercicio": "3 ¿Qué método se utiliza para convertir una cadena de texto a un número entero?",
-      "opciones": ["number", "string", "boolean", "object", "undefined"],
-      "nivel": 1
+      "enunciado": "¿Cuál es la salida de la siguiente expresión? 'console.log(0.1 + 0.2 === 0.3);'",
+      "opciones": ["true", "false", "undefined", "NaN", "null"],
+      "correcta": "false",
+      "dificultad": "facil"
     },
     {
       "id": 4,
-      "ejercicio": "4- ¿Cuál es la salida de la siguiente expresión?",
-      "opciones": ["number", "string", "boolean", "object", "undefined"],
-      "nivel": 1
+      "enunciado": "¿Cuál de los siguientes es un tipo de datos en JavaScript?",
+      "opciones": ["integer", "float", "number", "double", "character"],
+      "correcta": "number",
+      "dificultad": "facil"
+    },
+    {
+      "id": 5,
+      "enunciado": "¿Cuál es el resultado de 2 + '2' en JavaScript?",
+      "opciones": ["4", "22", "NaN", "undefined", "error"],
+      "correcta": "22",
+      "dificultad": "medio"
+    },
+    {
+      "id": 6,
+      "enunciado": "¿Cuál es la diferencia principal entre 'let' y 'var' en JavaScript?",
+      "opciones":
+      [
+        "'let' se usa solo para números y 'var' para cadenas",
+        "'let' tiene ámbito de función y 'var' tiene ámbito de bloque",
+        "'let' tiene ámbito de bloque y 'var' tiene ámbito de función",
+        "'let' es más rápido que 'var'",
+        "'let' y 'var' son completamente intercambiables"
+      ],
+      "correcta": "'let' tiene ámbito de bloque y 'var' tiene ámbito de función",
+      "dificultad": "medio"
+    },
+    {
+      "id": 7,
+      "enunciado": "¿Qué imprimirá la siguiente línea de código? 'console.log(typeof null);'",
+      "opciones": ["null", "object", "undefined", "boolean", "string"],
+      "correcta": "object",
+      "dificultad": "medio"
+    },
+    {
+      "id": 8,
+      "enunciado": "¿Cuál es el propósito de la declaración 'use strict' en JavaScript?",
+      "opciones":
+      [
+        "Permitir el uso de nuevas características de ES6",
+        "Mejorar la velocidad de ejecución del código",
+        "Hacer que el código funcione en modo estricto, lo que previene ciertos errores",
+        "Hacer que el código sea compatible con versiones antiguas de JavaScript",
+        "Permitir el uso de 'async/await'"
+      ],
+      "correcta": "Hacer que el código funcione en modo estricto, lo que previene ciertos errores",
+      "dificultad": "medio"
     }
 ]
