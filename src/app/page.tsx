@@ -15,30 +15,37 @@ interface EjercicioJs {
   dificultad: string;
 }
 
+const solvedEjerciciosJs = new Array(mock.length).fill(false);
 export default function HomePage() {
   const ejercicios: EjercicioJs[] = mock as EjercicioJs[];
 
   function getRandom(): EjercicioJs {
-    const numEjercicio = Math.floor(Math.random() * ejercicios.length) + 1;
+    let numEjercicio = getRandomNumber();
+
+    while (!solvedEjerciciosJs[numEjercicio - 1] === false) {
+      numEjercicio = getRandomNumber();
+    }
     const ejercicioEncontrado = ejercicios.find((ejercicio) => ejercicio.id === numEjercicio);
 
     return ejercicioEncontrado!;
   }
-
+  function getRandomNumber() {
+    return Math.floor(Math.random() * ejercicios.length) + 1;
+  }
   const initialEjercicio = getRandom();
   const [ejercicioRandom, setEjercicioRandom] = useState<EjercicioJs>(initialEjercicio);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string>();
 
   function handleRandomize() {
     const ejer = getRandom();
 
     setEjercicioRandom(ejer);
-    setSelectedOption(null);
   }
 
   function handleSubmit() {
     if (selectedOption === ejercicioRandom.correcta) {
       alert("¡Correcto!");
+      solvedEjerciciosJs[ejercicioRandom.id - 1] = true;
     } else {
       alert("Respuesta incorrecta. Inténtalo de nuevo.");
     }
