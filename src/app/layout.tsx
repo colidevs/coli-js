@@ -8,7 +8,7 @@ import "./globals.css";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 
 function LayoutContent({children}: {children: React.ReactNode}) {
-  const {selectedCategory, setSelectedCategory} = useContext(DifficultyContext);
+  const {setSelectedCategory} = useContext(DifficultyContext);
 
   return (
     <html lang="en">

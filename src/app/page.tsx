@@ -15,16 +15,20 @@ interface EjercicioJs {
   opciones: string[];
   correcta: string;
   dificultad: string;
+  completed: boolean;
 }
 
 const solvedEjerciciosJs = new Array(mock.length).fill(false);
 
 export default function HomePage() {
   const ejercicios: EjercicioJs[] = mock as EjercicioJs[];
-  const {selectedCategory} = useContext(DifficultyContext);
+  const {selectedCategory, setSelectedCategory} = useContext(DifficultyContext);
 
   function getRandom(nivel: string): EjercicioJs {
-    const ejerciciosniveles = ejercicios.filter((ejercicio) => ejercicio.dificultad === nivel);
+    const ejerciciosniveles = ejercicios.filter(
+      (ejercicio) => ejercicio.dificultad === nivel && ejercicio.completed,
+    );
+
     const NumeroRandom = Math.floor(Math.random() * ejerciciosniveles.length);
 
     return ejerciciosniveles[NumeroRandom];
@@ -38,9 +42,18 @@ export default function HomePage() {
   }, [selectedCategory]);
 
   function handleSubmit() {
-    if (selectedOption === ejercicioRandom.correcta) {
+    /////ERROR/////////////////
+    const cleanedOption = selectedOption?.replace(ejercicioRandom.id.toString(), "");
+
+    console.log(ejercicioRandom.correcta);
+    console.log(cleanedOption);
+
+    if (cleanedOption === ejercicioRandom.correcta) {
+      ejercicios.map((preg) =>
+        preg.enunciado === ejercicioRandom.enunciado ? (preg.completed = false) : "",
+      );
       alert("¡Correcto!");
-      solvedEjerciciosJs[ejercicioRandom.id - 1] = true;
+      setEjercicioRandom(getRandom(selectedCategory));
     } else {
       alert("Respuesta incorrecta. Inténtalo de nuevo.");
     }
@@ -61,7 +74,7 @@ export default function HomePage() {
             <RadioGroup onValueChange={handleOptionChange}>
               {ejercicioRandom.opciones.map((opcion) => (
                 <div key={opcion} className="flex items-center space-x-2 py-2">
-                  <RadioGroupItem value={opcion} />
+                  <RadioGroupItem value={opcion + ejercicioRandom.id} />
                   <Label>{opcion}</Label>
                 </div>
               ))}
