@@ -1,6 +1,8 @@
 "use client";
 
-import {useState} from "react";
+import {useState, useContext, useEffect} from "react";
+
+import {DifficultyContext} from "../difficultyContext";
 
 import {Button} from "@/components/ui/button";
 import {Label} from "@/components/ui/label";
@@ -16,31 +18,24 @@ interface EjercicioJs {
 }
 
 const solvedEjerciciosJs = new Array(mock.length).fill(false);
+
 export default function HomePage() {
   const ejercicios: EjercicioJs[] = mock as EjercicioJs[];
+  const {selectedCategory} = useContext(DifficultyContext);
 
-  function getRandom(): EjercicioJs {
-    let numEjercicio = getRandomNumber();
+  function getRandom(nivel: string): EjercicioJs {
+    const ejerciciosniveles = ejercicios.filter((ejercicio) => ejercicio.dificultad === nivel);
+    const NumeroRandom = Math.floor(Math.random() * ejerciciosniveles.length);
 
-    while (!solvedEjerciciosJs[numEjercicio - 1] === false) {
-      numEjercicio = getRandomNumber();
-    }
-    const ejercicioEncontrado = ejercicios.find((ejercicio) => ejercicio.id === numEjercicio);
-
-    return ejercicioEncontrado!;
+    return ejerciciosniveles[NumeroRandom];
   }
-  function getRandomNumber() {
-    return Math.floor(Math.random() * ejercicios.length) + 1;
-  }
-  const initialEjercicio = getRandom();
-  const [ejercicioRandom, setEjercicioRandom] = useState<EjercicioJs>(initialEjercicio);
+
+  const [ejercicioRandom, setEjercicioRandom] = useState<EjercicioJs>(getRandom(selectedCategory));
   const [selectedOption, setSelectedOption] = useState<string>();
 
-  function handleRandomize() {
-    const ejer = getRandom();
-
-    setEjercicioRandom(ejer);
-  }
+  useEffect(() => {
+    setEjercicioRandom(getRandom(selectedCategory));
+  }, [selectedCategory]);
 
   function handleSubmit() {
     if (selectedOption === ejercicioRandom.correcta) {
@@ -75,7 +70,9 @@ export default function HomePage() {
         ) : null}
         <article className="mx-80 flex justify-between">
           <article className="flex size-1/3 flex-col">
-            <Button onClick={handleRandomize}>Randomize</Button>
+            <Button onClick={() => setEjercicioRandom(getRandom(selectedCategory))}>
+              Randomize
+            </Button>
           </article>
           <article className="flex size-1/3 flex-col">
             <Button onClick={handleSubmit}>Submit</Button>
