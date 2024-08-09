@@ -11,8 +11,9 @@ function LayoutContent({children}: {children: React.ReactNode}) {
   const {setSelectedCategory} = useContext(DifficultyContext);
 
   return (
-    <html lang="en">
-      <body className="container m-auto grid min-h-screen grid-rows-[auto,1fr,auto] bg-background px-4 font-sans antialiased">
+    <html className="h-full" lang="en">
+      <body className="grid min-h-screen grid-rows-[auto,1fr,auto] bg-background px-4 font-sans antialiased">
+        <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
         <header className="text-xl font-bold leading-[4rem]">
           <Link href="/">coli-js</Link>
           <Avatar>
