@@ -40,20 +40,31 @@ export default function HomePage() {
     setEjercicioRandom(getRandom(selectedCategory));
   }, [selectedCategory]);
 
-  function handleOptionChange(value: string) {
-    setSelectedOption(value);
-    const cleanedOption = value.replace(ejercicioRandom.id.toString(), "");
+  function handleSubmit() {
+    const cleanedOption = selectedOption?.replace(ejercicioRandom.id.toString(), "");
 
     if (cleanedOption === ejercicioRandom.correcta) {
       setIsCorrect(true);
+      ejercicios.map((preg) =>
+        preg.enunciado === ejercicioRandom.enunciado ? (preg.completed = false) : "",
+      );
+      setTimeout(() => {
+        setEjercicioRandom(getRandom(selectedCategory));
+        setIsCorrect(null);
+        setSelectedOption("");
+      }, 2000);
     } else {
       setIsCorrect(false);
     }
   }
 
+  function handleOptionChange(value: string) {
+    setSelectedOption(value);
+  }
+
   return (
     <main className="m-auto flex min-h-[100vh] flex-col ">
-      <section className="mx-auto mt-2 flex w-full max-w-4xl flex-col justify-center border border-sky-500 p-10">
+      <section className="mx-auto mt-2 flex w-full max-w-4xl flex-col justify-center border border-sky-500 bg-slate-800 p-10">
         <article className="mt-5 border border-sky-500">
           <p className="p-32 text-2xl">{ejercicioRandom?.enunciado}</p>
         </article>
@@ -86,7 +97,7 @@ export default function HomePage() {
         ) : null}
       </section>
       <div className="mx-auto mt-8 flex w-full max-w-4xl gap-2">
-        <Button className="h-14 w-full" onClick={() => alert("Opciones seleccionadas")}>
+        <Button className="h-14 w-full" onClick={handleSubmit}>
           Submit
         </Button>
         <Button
