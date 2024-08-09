@@ -1,7 +1,5 @@
 "use client";
 
-import internal from "stream";
-
 import {useState, useContext, useEffect} from "react";
 
 import {DifficultyContext} from "../difficultyContext";
