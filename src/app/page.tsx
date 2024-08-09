@@ -35,9 +35,13 @@ export default function HomePage() {
 
   const [ejercicioRandom, setEjercicioRandom] = useState<EjercicioJs>(getRandom(selectedCategory));
   const [selectedOption, setSelectedOption] = useState<string>();
+  const [correctcounter, setcorrectcounter] = useState<number>(0);
+  const [incorrectcounter, setincorrectcounter] = useState<number>(0);
 
   useEffect(() => {
     setEjercicioRandom(getRandom(selectedCategory));
+    setcorrectcounter(0);
+    setincorrectcounter(0);
   }, [selectedCategory]);
 
   function handleSubmit() {
@@ -48,13 +52,12 @@ export default function HomePage() {
       ejercicios.map((preg) =>
         preg.enunciado === ejercicioRandom.enunciado ? (preg.completed = false) : "",
       );
-      setTimeout(() => {
-        setEjercicioRandom(getRandom(selectedCategory));
-        setIsCorrect(null);
-        setSelectedOption("");
-      }, 2000);
+      alert("¡Correcto!");
+      setcorrectcounter(correctcounter + 1);
+      setEjercicioRandom(getRandom(selectedCategory));
     } else {
-      setIsCorrect(false);
+      alert("Respuesta incorrecta. Inténtalo de nuevo.");
+      setcorrectcounter(incorrectcounter + 1);
     }
   }
 
