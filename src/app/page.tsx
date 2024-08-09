@@ -18,11 +18,9 @@ interface EjercicioJs {
   completed: boolean;
 }
 
-const solvedEjerciciosJs = new Array(mock.length).fill(false);
-
 export default function HomePage() {
   const ejercicios: EjercicioJs[] = mock as EjercicioJs[];
-  const {selectedCategory, setSelectedCategory} = useContext(DifficultyContext);
+  const {selectedCategory} = useContext(DifficultyContext);
 
   function getRandom(nivel: string): EjercicioJs {
     const ejerciciosniveles = ejercicios.filter(
@@ -45,9 +43,6 @@ export default function HomePage() {
     /////ERROR/////////////////
     const cleanedOption = selectedOption?.replace(ejercicioRandom.id.toString(), "");
 
-    console.log(ejercicioRandom.correcta);
-    console.log(cleanedOption);
-
     if (cleanedOption === ejercicioRandom.correcta) {
       ejercicios.map((preg) =>
         preg.enunciado === ejercicioRandom.enunciado ? (preg.completed = false) : "",
@@ -65,32 +60,38 @@ export default function HomePage() {
 
   return (
     <main className="m-auto flex min-h-[100vh] flex-col justify-center">
-      <section className="justify-center">
-        <article className="mx-80 flex justify-center">
-          <p>{ejercicioRandom?.enunciado}</p>
-        </article>
-        {ejercicioRandom ? (
-          <article className="mt-12 flex justify-center">
-            <RadioGroup onValueChange={handleOptionChange}>
-              {ejercicioRandom.opciones.map((opcion) => (
-                <div key={opcion} className="flex items-center space-x-2 py-2">
-                  <RadioGroupItem value={opcion + ejercicioRandom.id} />
-                  <Label>{opcion}</Label>
-                </div>
-              ))}
-            </RadioGroup>
+      <section>
+        <section className="flex flex-col justify-center border border-sky-500 p-10">
+          <article className="mx-80 mt-5 border border-sky-500">
+            <p className="p-32 text-2xl">{ejercicioRandom?.enunciado}</p>
           </article>
-        ) : null}
-        <article className="mx-80 flex justify-between">
-          <article className="flex size-1/3 flex-col">
-            <Button onClick={() => setEjercicioRandom(getRandom(selectedCategory))}>
-              Randomize
-            </Button>
-          </article>
-          <article className="flex size-1/3 flex-col">
-            <Button onClick={handleSubmit}>Submit</Button>
-          </article>
-        </article>
+          {ejercicioRandom ? (
+            <form className="mx-80 mt-12 flex flex-col">
+              <RadioGroup className="w-[42rem] space-y-2" onValueChange={handleOptionChange}>
+                {ejercicioRandom.opciones.map((opcion) => (
+                  <div
+                    key={opcion}
+                    className="flex h-16 items-center space-x-3 rounded-xl border border-sky-500 bg-slate-800 p-6"
+                  >
+                    <RadioGroupItem value={opcion + ejercicioRandom.id} />
+                    <Label className="text-xl">{opcion}</Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </form>
+          ) : null}
+        </section>
+        <div className="flex gap-2 p-8">
+          <Button
+            className="h-14 w-full"
+            onClick={() => setEjercicioRandom(getRandom(selectedCategory))}
+          >
+            Siguiente
+          </Button>
+          <Button className="h-14 w-full" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </div>
       </section>
     </main>
   );
