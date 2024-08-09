@@ -1,80 +1,162 @@
 [
-    {
+  {
       "id": 1,
       "enunciado": "¿Qué valor imprimirá la siguiente línea de código? 'console.log(typeof 42);'",
-      "opciones": ["boolean", "string", "number", "object", "undefined"],
+      "opciones": ["boolean", "string", "number"],
       "correcta": "number",
       "dificultad": "facil",
-      "completed":true
-    },
-    {
+      "completed": true
+  },
+  {
       "id": 2,
       "enunciado": "¿Qué método se utiliza para convertir una cadena de texto a un número entero?",
-      "opciones": ["Number.parseInt()", "Number.toString()", "Number.parseFloat()", "Number.isInteger()", "Number.toFixed()"],
+      "opciones": ["Number.parseInt()", "Number.toString()", "Number.parseFloat()"],
       "correcta": "Number.parseInt()",
       "dificultad": "facil",
-      "completed":true
-    },
-    {
+      "completed": true
+  },
+  {
       "id": 3,
       "enunciado": "¿Cuál es la salida de la siguiente expresión? 'console.log(0.1 + 0.2 === 0.3);'",
-      "opciones": ["true", "false", "undefined", "NaN", "null"],
+      "opciones": ["true", "false", "undefined"],
       "correcta": "false",
       "dificultad": "facil",
-      "completed":true
-    },
-    {
+      "completed": true
+  },
+  {
       "id": 4,
       "enunciado": "¿Cuál de los siguientes es un tipo de datos en JavaScript?",
-      "opciones": ["integer", "float", "number", "double", "character"],
+      "opciones": ["integer", "float", "number"],
       "correcta": "number",
       "dificultad": "facil",
-      "completed":true
-    },
-    {
+      "completed": true
+  },
+  {
       "id": 5,
       "enunciado": "¿Cuál es el resultado de 2 + '2' en JavaScript?",
-      "opciones": ["4", "22", "NaN", "undefined", "error"],
+      "opciones": ["4", "22", "NaN"],
       "correcta": "22",
       "dificultad": "medio",
-      "completed":true
-    },
-    {
+      "completed": true
+  },
+  {
       "id": 6,
       "enunciado": "¿Cuál es la diferencia principal entre 'let' y 'var' en JavaScript?",
-      "opciones":
-      [
-        "'let' se usa solo para números y 'var' para cadenas",
-        "'let' tiene ámbito de función y 'var' tiene ámbito de bloque",
-        "'let' tiene ámbito de bloque y 'var' tiene ámbito de función",
-        "'let' es más rápido que 'var'",
-        "'let' y 'var' son completamente intercambiables"
+      "opciones": [
+          "'let' se usa solo para números y 'var' para cadenas",
+          "'let' tiene ámbito de función y 'var' tiene ámbito de bloque",
+          "'let' tiene ámbito de bloque y 'var' tiene ámbito de función"
       ],
       "correcta": "'let' tiene ámbito de bloque y 'var' tiene ámbito de función",
       "dificultad": "medio",
-      "completed":true
-    },
-    {
+      "completed": true
+  },
+  {
       "id": 7,
       "enunciado": "¿Qué imprimirá la siguiente línea de código? 'console.log(typeof null);'",
-      "opciones": ["null", "object", "undefined", "boolean", "string"],
+      "opciones": ["null", "object", "undefined"],
       "correcta": "object",
       "dificultad": "medio",
-      "completed":true
-    },
-    {
+      "completed": true
+  },
+  {
       "id": 8,
       "enunciado": "¿Cuál es el propósito de la declaración 'use strict' en JavaScript?",
-      "opciones":
-      [
-        "Permitir el uso de nuevas características de ES6",
-        "Mejorar la velocidad de ejecución del código",
-        "Hacer que el código funcione en modo estricto, lo que previene ciertos errores",
-        "Hacer que el código sea compatible con versiones antiguas de JavaScript",
-        "Permitir el uso de 'async/await'"
+      "opciones": [
+          "Permitir el uso de nuevas características de ES6",
+          "Mejorar la velocidad de ejecución del código",
+          "Hacer que el código funcione en modo estricto, lo que previene ciertos errores"
       ],
       "correcta": "Hacer que el código funcione en modo estricto, lo que previene ciertos errores",
       "dificultad": "medio",
-      "completed":true
-    }
+      "completed": true
+  },
+  {
+      "id": 9,
+      "enunciado": "¿Qué valor imprimirá la siguiente línea de código? 'console.log([] + []);'",
+      "opciones": ["undefined", "NaN", ""],
+      "correcta": "",
+      "dificultad": "dificil",
+      "completed": true
+  },
+  {
+      "id": 10,
+      "enunciado": "¿Cuál es la salida de la siguiente expresión? 'console.log(!!false + !!true);'",
+      "opciones": ["truefalse", "01", "1"],
+      "correcta": "1",
+      "dificultad": "dificil",
+      "completed": true
+  },
+  {
+      "id": 11,
+      "enunciado": "¿Cuál es la diferencia principal entre '==' y '===' en JavaScript?",
+      "opciones": [
+          "'==' compara valores y tipos, mientras que '===' solo compara valores",
+          "'==' realiza conversión de tipos implícita, mientras que '===' no",
+          "'==' es más rápido que '==='"
+      ],
+      "correcta": "'==' realiza conversión de tipos implícita, mientras que '===' no",
+      "dificultad": "dificil",
+      "completed": true
+  },
+  {
+      "id": 12,
+      "enunciado": "¿Qué hace el método 'Object.freeze()' en JavaScript?",
+      "opciones": [
+          "Congela el valor de un objeto, evitando que se pueda modificar",
+          "Convierte un objeto en un array",
+          "Copia las propiedades de un objeto a otro"
+      ],
+      "correcta": "Congela el valor de un objeto, evitando que se pueda modificar",
+      "dificultad": "dificil",
+      "completed": true
+  },
+  {
+    "id": 13,
+    "enunciado": "¿Qué valor imprimirá la siguiente línea de código? 'console.log(1 + \"2\" + \"2\");'",
+    "opciones": ["122", "32", "NaN"],
+    "correcta": "122",
+    "dificultad": "dificil",
+    "completed": true
+},
+  {
+      "id": 14,
+      "enunciado": "¿Cuál es la salida de la siguiente expresión? 'console.log([] == ![]);'",
+      "opciones": ["true", "false", "undefined"],
+      "correcta": "true",
+      "dificultad": "imposible",
+      "completed": true
+  },
+  {
+      "id": 15,
+      "enunciado": "En JavaScript, ¿qué sucede si se ejecuta el siguiente código?\n```javascript\nfunction f() {\n    return\n    {\n        status: true\n    };\n}\nconsole.log(f());\n```",
+      "opciones": ["{status: true}", "undefined"],
+      "correcta": "undefined",
+      "dificultad": "imposible",
+      "completed": true
+  },
+  {
+      "id": 16,
+      "enunciado": "¿Qué valor imprimirá la siguiente línea de código? 'console.log(typeof typeof 1);'",
+      "opciones": ["number", "string", "undefined"],
+      "correcta": "string",
+      "dificultad": "imposible",
+      "completed": true
+  },
+  {
+      "id": 17,
+      "enunciado": "¿Qué valor imprimirá la siguiente expresión en JavaScript? 'console.log(2 + \"2\" - \"1\");'",
+      "opciones": ["21", "22", "3"],
+      "correcta": "21",
+      "dificultad": "imposible",
+      "completed": true
+  },
+  {
+      "id": 18,
+      "enunciado": "En JavaScript, ¿cuál es el resultado de la siguiente expresión?\n```javascript\nvar foo = {n: 1};\nvar bar = foo;\nfoo.x = foo = {n: 2};\nconsole.log(foo.x);\n```",
+      "opciones": ["{n: 1}", "{n: 2}", "undefined"],
+      "correcta": "undefined",
+      "dificultad": "imposible",
+      "completed": true
+  }
 ]
