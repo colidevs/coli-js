@@ -44,32 +44,38 @@ export default function HomePage() {
     setincorrectcounter(0);
   }, [selectedCategory]);
 
-  function handleSubmit() {
-    const cleanedOption = selectedOption?.replace(ejercicioRandom.id.toString(), "");
+  function handleOptionChange(value: string) {
+    setSelectedOption(value);
+    const cleanedOption = value.replace(ejercicioRandom.id.toString(), "");
 
     if (cleanedOption === ejercicioRandom.correcta) {
       setIsCorrect(true);
       ejercicios.map((preg) =>
         preg.enunciado === ejercicioRandom.enunciado ? (preg.completed = false) : "",
       );
-      alert("¡Correcto!");
       setcorrectcounter(correctcounter + 1);
-      setEjercicioRandom(getRandom(selectedCategory));
     } else {
-      alert("Respuesta incorrecta. Inténtalo de nuevo.");
-      setcorrectcounter(incorrectcounter + 1);
+      setIsCorrect(false);
+      setincorrectcounter(incorrectcounter + 1);
     }
   }
 
-  function handleOptionChange(value: string) {
-    setSelectedOption(value);
+  function handleSubmit() {
+    alert(isCorrect ? "¡Correcto!" : "Respuesta incorrecta. Inténtalo de nuevo.");
+    if (isCorrect) {
+      setEjercicioRandom(getRandom(selectedCategory));
+      setIsCorrect(null); // Reset para la siguiente pregunta
+    }
   }
 
   return (
     <main className="m-auto flex min-h-[100vh] flex-col ">
-      <section className="mx-auto mt-2 flex w-full max-w-4xl flex-col justify-center border border-sky-500 bg-slate-800 p-10">
-        <article className="mt-5 border border-sky-500">
-          <p className="p-32 text-2xl">{ejercicioRandom?.enunciado}</p>
+      <section className="mx-auto mt-2 flex w-full max-w-4xl flex-col justify-center bg-gray-950 p-10 outline-double outline-gray-900">
+        <div>5/{correctcounter}</div>
+        <article className="mt-5 rounded-xl shadow-[0_0_20px_cyan] outline-double outline-blue-500">
+          <p className="p-32 text-center font-mono text-2xl font-semibold text-amber-400">
+            {ejercicioRandom?.enunciado}
+          </p>
         </article>
         {ejercicioRandom ? (
           <form className="mt-12 flex w-full flex-col">
@@ -80,15 +86,15 @@ export default function HomePage() {
                 return (
                   <div
                     key={opcion}
-                    className={`flex h-16 w-full items-center space-x-3 rounded-xl border p-6 ${
+                    className={`flex h-16 w-full cursor-pointer items-center space-x-3 rounded-xl p-6 font-mono outline-double outline-blue-500 ${
                       isSelected
                         ? isCorrect === true
                           ? "bg-green-500"
                           : isCorrect === false
                             ? "bg-red-500"
                             : "bg-slate-800"
-                        : "bg-slate-800"
-                    } border-sky-500`}
+                        : "bg-gradient-to-t from-slate-800 to-slate-900"
+                    }`}
                   >
                     <RadioGroupItem value={opcion + ejercicioRandom.id} />
                     <Label className="text-xl">{opcion}</Label>
@@ -100,11 +106,11 @@ export default function HomePage() {
         ) : null}
       </section>
       <div className="mx-auto mt-8 flex w-full max-w-4xl gap-2">
-        <Button className="h-14 w-full" onClick={handleSubmit}>
+        <Button className="h-14 w-full text-lg" onClick={handleSubmit}>
           Submit
         </Button>
         <Button
-          className="h-14 w-full"
+          className="h-14 w-full text-lg"
           onClick={() => setEjercicioRandom(getRandom(selectedCategory))}
         >
           Siguiente
