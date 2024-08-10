@@ -12,87 +12,93 @@ import mock from "@/mocks/default.json";
 interface EjercicioJs {
   id: number;
   enunciado: string;
-  opciones: string[];
-  correcta: string;
-  dificultad: string;
-  completed: boolean;
+  opciones?: string[];
+  correcta?: string;
+  dificultad?: string;
+  completed?: boolean;
 }
 
 export default function HomePage() {
   const ejercicios: EjercicioJs[] = mock as EjercicioJs[];
   const {selectedCategory} = useContext(DifficultyContext);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [counter, setCounter] = useState<number>(0);
+  const [ejercicioRandom, setEjercicioRandom] = useState<EjercicioJs>(getRandom(selectedCategory));
+  const [selectedOption, setSelectedOption] = useState<string>();
 
   function getRandom(nivel: string): EjercicioJs {
     const ejerciciosniveles = ejercicios.filter(
       (ejercicio) => ejercicio.dificultad === nivel && ejercicio.completed,
     );
 
+    if (ejerciciosniveles.length === 0) {
+      return ejercicios[18];
+    }
     const NumeroRandom = Math.floor(Math.random() * ejerciciosniveles.length);
 
     return ejerciciosniveles[NumeroRandom];
   }
 
-  const [ejercicioRandom, setEjercicioRandom] = useState<EjercicioJs>(getRandom(selectedCategory));
-  const [selectedOption, setSelectedOption] = useState<string>();
-  const [correctcounter, setcorrectcounter] = useState<number>(0);
-  const [incorrectcounter, setincorrectcounter] = useState<number>(0);
-
   useEffect(() => {
     setEjercicioRandom(getRandom(selectedCategory));
-    setcorrectcounter(0);
-    setincorrectcounter(0);
+    setCounter(0);
+    ejercicios.map((preg) => (preg.completed = true));
   }, [selectedCategory]);
-
-  function handleSubmit() {
-    const cleanedOption = selectedOption?.replace(ejercicioRandom.id.toString(), "");
-
-    if (cleanedOption === ejercicioRandom.correcta) {
-      setIsCorrect(true);
-      ejercicios.map((preg) =>
-        preg.enunciado === ejercicioRandom.enunciado ? (preg.completed = false) : "",
-      );
-      alert("¡Correcto!");
-      setcorrectcounter(correctcounter + 1);
-      setEjercicioRandom(getRandom(selectedCategory));
-    } else {
-      alert("Respuesta incorrecta. Inténtalo de nuevo.");
-      setcorrectcounter(incorrectcounter + 1);
-    }
-  }
 
   function handleOptionChange(value: string) {
     setSelectedOption(value);
+    const cleanedOption = value.replace(ejercicioRandom.id.toString(), "");
+
+    setIsCorrect(cleanedOption === ejercicioRandom.correcta);
+
+    ejercicios.map((preg) =>
+      preg.enunciado === ejercicioRandom.enunciado ? (preg.completed = false) : "",
+    );
+  }
+
+  function handleNext() {
+    if (isCorrect !== null) {
+      setCounter((old) => old + 1);
+      setEjercicioRandom(getRandom(selectedCategory));
+      setIsCorrect(null);
+    }
   }
 
   return (
     <main className="m-auto flex min-h-[100vh] flex-col ">
-      <section className="mx-auto mt-2 flex w-full max-w-4xl flex-col justify-center border border-sky-500 bg-slate-800 p-10">
-        <article className="mt-5 border border-sky-500">
-          <p className="p-32 text-2xl">{ejercicioRandom?.enunciado}</p>
+      <section className="mx-auto mt-2 flex w-full max-w-4xl flex-col justify-center bg-gray-950 p-10 outline-double outline-gray-900">
+        <div>
+          {ejercicios.filter((ejercicio) => ejercicio.dificultad === selectedCategory).length}/
+          {counter}
+          <div className="flex">{ejercicioRandom?.dificultad}</div>
+        </div>
+        <article className="mt-5 rounded-xl shadow-[0_0_20px_cyan] outline-double outline-blue-500">
+          <p className="p-32 text-center font-mono text-2xl font-semibold text-amber-400">
+            {ejercicioRandom?.enunciado}
+          </p>
         </article>
         {ejercicioRandom ? (
           <form className="mt-12 flex w-full flex-col">
             <RadioGroup className="w-full space-y-2" onValueChange={handleOptionChange}>
-              {ejercicioRandom.opciones.map((opcion) => {
+              {ejercicioRandom.opciones?.map((opcion) => {
                 const isSelected = selectedOption === opcion + ejercicioRandom.id;
 
                 return (
-                  <div
+                  <Label
                     key={opcion}
-                    className={`flex h-16 w-full items-center space-x-3 rounded-xl border p-6 ${
+                    className={`flex h-16 w-full cursor-pointer items-center space-x-3 rounded-xl p-6 font-mono outline-double outline-blue-500 ${
                       isSelected
                         ? isCorrect === true
                           ? "bg-green-500"
                           : isCorrect === false
                             ? "bg-red-500"
                             : "bg-slate-800"
-                        : "bg-slate-800"
-                    } border-sky-500`}
+                        : "bg-gradient-to-t from-slate-800 to-slate-900"
+                    }`}
                   >
                     <RadioGroupItem value={opcion + ejercicioRandom.id} />
-                    <Label className="text-xl">{opcion}</Label>
-                  </div>
+                    <span className="ms-3">{opcion}</span>
+                  </Label>
                 );
               })}
             </RadioGroup>
@@ -100,13 +106,7 @@ export default function HomePage() {
         ) : null}
       </section>
       <div className="mx-auto mt-8 flex w-full max-w-4xl gap-2">
-        <Button className="h-14 w-full" onClick={handleSubmit}>
-          Submit
-        </Button>
-        <Button
-          className="h-14 w-full"
-          onClick={() => setEjercicioRandom(getRandom(selectedCategory))}
-        >
+        <Button className="h-14 w-full text-lg" disabled={isCorrect === null} onClick={handleNext}>
           Siguiente
         </Button>
       </div>

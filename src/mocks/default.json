@@ -158,5 +158,10 @@
       "correcta": "undefined",
       "dificultad": "imposible",
       "completed": true
-  }
+  },
+  {
+    "id": 19,
+    "enunciado": "Completaste este nivel"
+
+}
 ]
