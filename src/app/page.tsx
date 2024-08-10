@@ -70,6 +70,7 @@ export default function HomePage() {
         <div>
           {ejercicios.filter((ejercicio) => ejercicio.dificultad === selectedCategory).length}/
           {counter}
+          <div className="flex">{ejercicioRandom?.dificultad}</div>
         </div>
         <article className="mt-5 rounded-xl shadow-[0_0_20px_cyan] outline-double outline-blue-500">
           <p className="p-32 text-center font-mono text-2xl font-semibold text-amber-400">
@@ -83,7 +84,7 @@ export default function HomePage() {
                 const isSelected = selectedOption === opcion + ejercicioRandom.id;
 
                 return (
-                  <div
+                  <Label
                     key={opcion}
                     className={`flex h-16 w-full cursor-pointer items-center space-x-3 rounded-xl p-6 font-mono outline-double outline-blue-500 ${
                       isSelected
@@ -96,8 +97,8 @@ export default function HomePage() {
                     }`}
                   >
                     <RadioGroupItem value={opcion + ejercicioRandom.id} />
-                    <Label className="text-xl">{opcion}</Label>
-                  </div>
+                    <span className="ms-3">{opcion}</span>
+                  </Label>
                 );
               })}
             </RadioGroup>

@@ -20,38 +20,38 @@ function LayoutContent({children}: {children: React.ReactNode}) {
             <nav className="flex justify-center space-x-8 text-center">
               <Link href="/">
                 <button
-                  className="rounded-lg bg-white text-black shadow-md shadow-white duration-300 hover:mx-2 hover:scale-110 hover:delay-150"
+                  className="rounded-lg bg-white text-black shadow-sm shadow-white duration-200 hover:scale-110 hover:delay-150"
                   type="button"
                   onClick={() => setSelectedCategory("facil")}
                 >
-                  <p className="px-5 py-2 text-base">Facil</p>
+                  <p className="px-5 py-2 text-base">🌈</p>
                 </button>
               </Link>
               <Link href="/">
                 <button
-                  className="rounded-lg bg-white text-black shadow-md shadow-white duration-300 hover:mx-2 hover:scale-110 hover:delay-150"
+                  className="rounded-lg bg-white text-black shadow-sm shadow-white duration-200 hover:scale-110 hover:delay-150"
                   type="button"
                   onClick={() => setSelectedCategory("medio")}
                 >
-                  <p className="px-5 py-2 text-base">Medio</p>
+                  <p className="px-5 py-2 text-base">⚠️</p>
                 </button>
               </Link>
               <Link href="/">
                 <button
-                  className="rounded-lg bg-white text-black shadow-md shadow-white duration-300 hover:mx-2 hover:scale-110 hover:delay-150"
+                  className="rounded-lg bg-white text-black shadow-sm shadow-white duration-200 hover:scale-110 hover:delay-150"
                   type="button"
                   onClick={() => setSelectedCategory("dificil")}
                 >
-                  <p className="px-5 py-2 text-base">Dificil</p>
+                  <p className="px-5 py-2 text-base">🧠</p>
                 </button>
               </Link>
               <Link href="/">
                 <button
-                  className="rounded-lg bg-white text-black shadow-md shadow-white duration-300 hover:mx-2 hover:scale-110 hover:delay-150"
+                  className="rounded-lg bg-white text-black shadow-sm shadow-white duration-200 hover:scale-110 hover:delay-150"
                   type="button"
                   onClick={() => setSelectedCategory("imposible")}
                 >
-                  <p className="px-5 py-2 text-base">Imposible</p>
+                  <p className="px-5 py-2 text-base">☠️</p>
                 </button>
               </Link>
             </nav>
